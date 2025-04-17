@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>NSFW RP Mini App</title>
+  <script src="https://telegram.org/js/telegram-web-app.js"></script>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background: #101010;
+      color: white;
+      margin: 0;
+      padding: 0;
+    }
+
+    header {
+      background-color: #222;
+      padding: 15px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    header h1 {
+      font-size: 20px;
+      margin: 0;
+    }
+
+    #gems {
+      background: #5a00ff;
+      padding: 5px 10px;
+      border-radius: 5px;
+    }
+
+    nav {
+      display: flex;
+      justify-content: space-around;
+      background: #111;
+      padding: 10px 0;
+      border-top: 1px solid #444;
+    }
+
+    nav button {
+      background: none;
+      border: none;
+      color: white;
+      font-size: 16px;
+    }
+
+    section {
+      padding: 20px;
+      display: none;
+    }
+
+    section.active {
+      display: block;
+    }
+
+    .item-card {
+      background: #222;
+      padding: 15px;
+      margin-bottom: 15px;
+      border-radius: 10px;
+    }
+
+    .btn {
+      margin-top: 10px;
+      background: #5a00ff;
+      color: white;
+      padding: 8px 12px;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+
+    select, input {
+      background: #333;
+      color: white;
+      border: none;
+      padding: 8px;
+      width: 100%;
+      margin-top: 10px;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>RP Assistant</h1>
+    <div id="gems">💎 200</div>
+  </header>
+
+  <nav>
+    <button onclick="showTab('characters')">Characters</button>
+    <button onclick="showTab('items')">Items</button>
+    <button onclick="showTab('settings')">Settings</button>
+  </nav>
+
+  <section id="characters" class="active">
+    <h2>Choose Character</h2>
+    <div class="item-card">
+      <p><strong>Lucy</strong> – Anime Neko</p>
+      <button class="btn">Chat Now</button>
+    </div>
+    <div class="item-card">
+      <p><strong>Maya</strong> – Realistic Teen</p>
+      <button class="btn">Chat Now</button>
+    </div>
+  </section>
+
+  <section id="items">
+    <h2>Appearance Items</h2>
+    <div class="item-card">
+      <p>Outfit – Maid Dress</p>
+      <button class="btn">Buy (20 Gems)</button>
+    </div>
+
+    <h2>Useable Items</h2>
+    <div class="item-card">
+      <p>Love Potion</p>
+      <button class="btn">Buy (15 Gems)</button>
+    </div>
+  </section>
+
+  <section id="settings">
+    <h2>Settings</h2>
+    <label>Language</label>
+    <select>
+      <option>Burmese</option>
+      <option>English</option>
+    </select>
+
+    <label>Image Generation</label>
+    <select>
+      <option>Realistic</option>
+      <option>Anime Style</option>
+    </select>
+
+    <label>Account Type</label>
+    <select>
+      <option>Free</option>
+      <option>Premium</option>
+    </select>
+  </section>
+
+  <script>
+    const tg = window.Telegram.WebApp;
+    tg.expand();
+
+    function showTab(id) {
+      document.querySelectorAll("section").forEach(sec => sec.classList.remove("active"));
+      document.getElementById(id).classList.add("active");
+    }
+  </script>
+</body>
+</html>
